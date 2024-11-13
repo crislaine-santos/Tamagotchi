@@ -9,7 +9,7 @@ namespace Tamagotchi
     public class Ability
     {
         public AbilityResult ability { get; set; }
-        public bool is_hidden { get; set; }
-        public int slot { get; set; }
+        public bool Is_hidden { get; set; }
+        public int Slot { get; set; }
     }
 }

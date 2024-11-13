@@ -9,11 +9,11 @@ namespace Tamagotchi
 {
     public class Mascote
     {
-        public List<Ability> abilities { get; set; }              
-        public int id { get; set; }        
-        public string name { get; set; }        
-        public int weight { get; set; }
-        public int height { get; set; }
+        public List<Ability> Abilities { get; set; }              
+        public int Id { get; set; }        
+        public string Name { get; set; }        
+        public int Weight { get; set; }
+        public int Height { get; set; }
 
     } 
 
