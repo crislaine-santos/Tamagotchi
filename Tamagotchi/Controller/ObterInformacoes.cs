@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
+using Tamagotchi.Model;
 
 
-namespace Tamagotchi
+namespace Tamagotchi.Controller
 {
     public static class ObterInformaoces
     {
-
         public static async Task ObterInformacoesMascoteCompleto(RestClient client, string mascote) //"async, Task" que essa função é assíncrona
         {
             try
@@ -23,7 +23,7 @@ namespace Tamagotchi
                 {
                     Console.WriteLine("Desculpe não pude encontrar as informações!");
                 }
-
+                // verificar se esse else é realmnete necesário
             }
             catch (Exception mensage)
             {
@@ -65,8 +65,9 @@ namespace Tamagotchi
 
             Console.WriteLine("Habilidades: ");
             foreach (var ability in respostaDeserializada.Abilities)
+
             {
-                var abilityResult = ability.ability;
+                var abilityResult = ability.ability; //* 
                 Console.WriteLine($"-{abilityResult.Name}");
             }
             Console.WriteLine("===============");
