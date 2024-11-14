@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
-
-namespace Tamagotchi.Model
+﻿namespace Tamagotchi.Model
 {
     public class Mascote
     {
@@ -14,7 +7,18 @@ namespace Tamagotchi.Model
         public string Name { get; set; }
         public int Weight { get; set; }
         public int Height { get; set; }
-
+        
     }
+    public class Ability
+    {       
+        public AbilityResult ability { get; set; }
+        public bool Is_hidden { get; set; }
+        public int Slot { get; set; }
+    }
+    public class AbilityResult
+    {
+        public string Name { get; set; }
+        public string Url { get; set; }
+    }   
 
 }

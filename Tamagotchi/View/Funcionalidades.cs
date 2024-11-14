@@ -1,19 +1,13 @@
 ﻿using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tamagotchi.Controller;
 using Tamagotchi.Model;
 
 namespace Tamagotchi.View
 {
     public class Funcionalidades
-    {
-        
-        //private List<Mascote> mascotesAdotados = new List<Mascote>();
-        private string nomeMascote {  get; set; } 
+    {        
+        private MascoteInteracoes mascoteAdotado = new MascoteInteracoes();
+        private string nomeMascote {  get; set; }     
         public void Menu()
         {
 
@@ -26,115 +20,138 @@ namespace Tamagotchi.View
 ░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝╚═╝ ");
             Console.WriteLine("\n--------------------------------------MENU--------------------------------------\n");
             Console.WriteLine("1 - Adotar um Mascote Virtual");
-            Console.WriteLine("2 - Ver Meus Mascotes");
-            Console.WriteLine("3 - Sair\n");
+            Console.WriteLine("2 - Interagir com meu mascote");           
+            Console.WriteLine("3 - Sair do jogo\n");
             Console.Write("O que vc deseja fazer? ");
             var escolha = int.Parse(Console.ReadLine());
 
             switch (escolha)
             {
                 case 1:
-                    listarMascotesDisponiveis();
+                    ListarMascotesDisponiveis();
                     break;
                 case 2:
-                    VerMascotesAdotados();
+                    InteragirMascote();
                     break;
                 case 3:
                     Console.WriteLine("\nObrigado por jogar! Até a próxima!");
-                    break;
-
+                    break;                
             }
 
         }
-        async public void listarMascotesDisponiveis()
+
+        async public void ListarMascotesDisponiveis()
         {
             var client = new RestClient("https://pokeapi.co");
 
             Console.Clear();
             Console.WriteLine("\n--------------------------------ADOTAR UM MASCOTE--------------------------------\n");
             Console.WriteLine("Escolha uma espécie\n");
-            List<int> listaPokemons = new List<int> { 1, 4, 7, 25 };   //Adotar um pet
-            foreach (int pokemon in listaPokemons)
+            List<string> listaPokemons = new List<string> { "bulbasaur", "charmander", "squirtle", "pikachu" };//Adotar um pet
+            foreach (string pokemon in listaPokemons)
             {
 
-                ObterInformaoces.ObterNomeMascote(client, pokemon).Wait();
+                ObterInformaoces.ObterNomeMascotePorString(client, pokemon).Wait();
             }
-
-            //preciso por uma validação para o usuario não poder colocar um nome errado
-            nomeMascote = Console.ReadLine();
-            // se o nome do mascote nao estiver na lista de nomes de mascote, de um aviso falando pra digitar um nome certo e ler a key denovo
-
-            Console.Clear();
-            listarOQueDeseja(nomeMascote);           
-           
-
+            
+            Console.WriteLine("\n");
+            nomeMascote = Console.ReadLine();            
+            
+            if (listaPokemons.Contains(nomeMascote))
+            {
+                Console.Clear();
+                listarOQueDeseja();
+            }else
+            {                
+                Console.WriteLine($"\nO mascote digitado não existe! Por favor escolha um mascote existente na lista" +
+                                  $"\nPressione qualquer tecla para voltar");               
+                Console.ReadKey();                
+                ListarMascotesDisponiveis();
+            }
+                   
         }
-
-
-
-        async public void listarOQueDeseja(string mascote)
+        async public void listarOQueDeseja()
         {
             var client = new RestClient("https://pokeapi.co");
 
-            
             Console.WriteLine("\n---------------------------------------------------------------------------------\n");
             Console.WriteLine("O Que Você Deseja?\n");
-            Console.WriteLine($"1 - Saber Mais sobre o {mascote}");
-            Console.WriteLine($"2 - Adotar {mascote}");
+            Console.WriteLine($"1 - Saber Mais sobre o {nomeMascote}");
+            Console.WriteLine($"2 - Adotar {nomeMascote}");
             Console.WriteLine($"3- Voltar");
             var resposta = int.Parse(Console.ReadLine());
             Console.Clear();
 
             if (resposta == 1)
             {
-                ObterInformaoces.ObterInformacoesMascoteCompleto(client, mascote).Wait();
+                ObterInformaoces.ObterInformacoesMascoteCompleto(client, nomeMascote).Wait();
 
-                listarOQueDeseja(mascote);
+                listarOQueDeseja();
             }
             else if (resposta == 2)
-            {
-                
-                //var pokemon = await ObterInformaoces.ObterNomeMascote(client, mascote);
-                //AdcionarMascotesAdotados(pokemon);
+            {                
+                var tamagotchi = new MascoteInteracoes();
+                tamagotchi.AtualizarPropriedade(nomeMascote);
+                mascoteAdotado = tamagotchi;
 
                 Console.WriteLine($"MASCOTE ADOTADO COM SUCESSO, O OVO ESTA CHOCANDO: ");
-                Console.WriteLine("──────────────");
-                Console.WriteLine("────▄████▄────");
-                Console.WriteLine("──▄████████▄──");
-                Console.WriteLine("──██████████──");
-                Console.WriteLine("──▀████████▀──");
-                Console.WriteLine("─────▀██▀─────");
-                Console.WriteLine("──────────────");
+                Console.WriteLine("────────────────────────────");
+                Console.WriteLine("───────────▄████▄───────────");
+                Console.WriteLine("─────────▄████████▄─────────");
+                Console.WriteLine("─────────██████████─────────");
+                Console.WriteLine("─────────▀████████▀─────────");
+                Console.WriteLine("────────────▀██▀────────────");
+                Console.WriteLine("────────────────────────────");
 
-                //Menu();
+                Console.WriteLine("\n\nPressione qualquer tecla para voltar ao menu principal...");
+                Console.ReadKey();
+                Console.Clear();
+                Menu();
             }
             else
             {
-                listarMascotesDisponiveis();
+                ListarMascotesDisponiveis();
+            }
+        }
+
+        public void InteragirMascote()
+        {
+
+            Console.Clear();
+            Console.WriteLine("\n---------------------------------MENU INTERAÇÃO---------------------------------\n");            
+            Console.WriteLine("1- Saber como o mascote está");
+            Console.WriteLine("2- Alimentar o mascote");
+            Console.WriteLine("3- Brincar com o mascote");
+            Console.WriteLine("4- Por o mascote para dormir");
+            Console.WriteLine("5- Voltar para o menu principal");
+            Console.Write("Escolha uma opção: ");
+            var escolha = int.Parse(Console.ReadLine());
+
+            switch (escolha) 
+            { 
+                case 1:
+                    //MascoteInteracoes.MostrarStatus();
+                    mascoteAdotado.MostrarStatus();
+                  break;
+                case 2:
+                    mascoteAdotado.Alimentar();
+                    //MascoteInteracoes.Alimentar();
+                    break;
+                case 3:
+                    //MascoteInteracoes.Brincar();
+                    mascoteAdotado.Brincar();
+                    break;
+                case 4:
+                    mascoteAdotado.Descansar();
+                    //MascoteInteracoes.Descansar();
+                    break;
+                case 5:
+                        Menu();
+                    break;
+
             }
 
-        }
-        public void VerMascotesAdotados()
-        {
-            //Console.Clear();
-            //Console.WriteLine("\n--------------------------------SEUS MASCOTES------------------------------------\n");
-            //if (mascotesAdotados.Count == 0)
-            //{
-            //    Console.WriteLine("Você não tem mascotes adotados no Momento!");
-            //}
-            //else 
-            //{
-            //    Console.WriteLine("Mascotes adotados: ");
-            //    foreach (var mascote in mascotesAdotados) 
-            //    {
-            //        Console.WriteLine($"- {mascote.Name}, Id{mascote.Id}...");
-            //    }
-            //}
-
-        }
-        //public void AdcionarMascotesAdotados(Mascote mascote)
-        //{
-        //    mascotesAdotados.Add(mascote);
-        //}
+        }   
+                 
     }
 }

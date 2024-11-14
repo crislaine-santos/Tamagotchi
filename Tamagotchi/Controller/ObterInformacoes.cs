@@ -22,15 +22,14 @@ namespace Tamagotchi.Controller
                 else
                 {
                     Console.WriteLine("Desculpe não pude encontrar as informações!");
-                }
-                // verificar se esse else é realmnete necesário
+                }                
             }
             catch (Exception mensage)
             {
                 Console.WriteLine(mensage);
             }
         }
-        public static async Task ObterNomeMascote(RestClient client, int id)
+        public static async Task ObterNomeMascotePorId(RestClient client, int id)
         {
             try
             {
@@ -44,7 +43,30 @@ namespace Tamagotchi.Controller
                 }
                 else
                 {
-                    Console.WriteLine("Desculpe não pude encontrar as informações!");
+                    Console.WriteLine("Desculpe não pude encontrar as informações da API fornecida!");
+                }
+
+            }
+            catch (Exception mensage)
+            {
+                Console.WriteLine(mensage);
+            }
+        }
+        public static async Task ObterNomeMascotePorString(RestClient client, string mascote)
+        {
+            try
+            {
+                var request = new RestRequest($"/api/v2/pokemon/{mascote}", Method.Get);
+                var resposta = await client.ExecuteAsync(request);
+
+                if (resposta.IsSuccessStatusCode)
+                {
+                    var respostaDeserializada = JsonConvert.DeserializeObject<Mascote>(resposta.Content);
+                    NomeMascote(respostaDeserializada);
+                }
+                else
+                {
+                    Console.WriteLine("Desculpe não pude encontrar as informações da API fornecida!");
                 }
 
             }
@@ -70,7 +92,7 @@ namespace Tamagotchi.Controller
                 var abilityResult = ability.ability; //* 
                 Console.WriteLine($"-{abilityResult.Name}");
             }
-            Console.WriteLine("===============");
+            
 
         }
 
@@ -79,6 +101,8 @@ namespace Tamagotchi.Controller
             Console.WriteLine($"Nome: {respostaDeserializada.Name}");
         }
 
+       
     }
-
 }
+
+
