@@ -5,7 +5,7 @@ using System.Xml;
 using Tamagotchi.View;
 
 
-Funcionalidades funcionalidades = new Funcionalidades();
+Funcionalidades funcionalidades = new();
 
 funcionalidades.Menu();
 

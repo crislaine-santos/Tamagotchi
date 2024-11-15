@@ -2,11 +2,11 @@
 {
    
     public class MascoteInteracoes
-    {        
+    {       
         public int Alimentacao { get; private set; } //fome
         public int Humor { get; private set; } //brincar
         public int Energia { get; private set; } // descanso       
-        public string Nome { get; set; }        
+        public string? Nome { get; set; }        
 
         public MascoteInteracoes() //esse construtor garante que o Tamagotchi tenha valores aleatórios para suas necessidades básicas
         {
@@ -26,7 +26,8 @@
             Alimentacao = Math.Min(Alimentacao + 2, 10); //"Math.Min" garante que o valor de Alimentação nunca seja maior que 10
             Energia = Math.Max(Energia - 1, 0); //garante que o valor de Energia nunca seja negativo
 
-            Console.WriteLine("(=^w^=)");
+            Console.Clear();
+            Console.WriteLine("(=^w^=)\n");
             Console.WriteLine("Mascote Alimentado!");
         }
 
@@ -36,7 +37,8 @@
             Energia = Math.Max(Energia - 2, 0);
             Alimentacao = Math.Max(Alimentacao - 1, 0);
 
-            Console.WriteLine("(=^w^=)");
+            Console.Clear();
+            Console.WriteLine("(=^w^=)\n");
             Console.WriteLine("Mascote está feliz!");
         }
 
@@ -45,18 +47,18 @@
             Energia = Math.Min(Energia + 4, 10);
             Humor = Math.Max(Humor - 1, 0);
 
-            Console.WriteLine("(- 0 -)");
+            Console.Clear();
+            Console.WriteLine("(- 0 -)\n");
             Console.WriteLine("Mascote está dormindo!");
         }
 
         public void MostrarStatus()
         {
+            Console.Clear();
             Console.WriteLine($"Status do Mascote: {Nome}\n");
             Console.WriteLine($"Alimentação: {Alimentacao}");
             Console.WriteLine($"Humor: {Humor}");
-            Console.WriteLine($"Energia: {Energia}");
-
-            
+            Console.WriteLine($"Energia: {Energia}");            
 
         }
     }
