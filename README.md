@@ -7,17 +7,13 @@ Nele utilizei de duas
 
 -API do Pokémon: Busca por informações detalhadas de diversas espécies de Pokémon.
 
--Interface interativa: Menu intuitivo com opções divertidas para o usuário.
+-Interface interativa: Menu intuitivo com opções para o usuário.
 
 -Organização de dados: Parsing do JSON retornado pela API e exibição das informações.
 
 -Padrão MVC: Arquitetura organizada em Model, View e Controller para melhor modularização do código.
 
-Em andamento...
-
--Interação com os pokémons: Simulação de interações com os pokémons, como brincar.
-
--Tratamento de erros: Implementação de mecanismos para lidar com entradas de dados inválidas.
+-Interação com os pokémons: Simulação de interações com os pokémons.
 
 <h3 style="font-size: 2em;">Tecnologias Utilizadas</h3>
 
