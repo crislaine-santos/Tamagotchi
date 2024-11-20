@@ -3,7 +3,6 @@
 Projeto back-end em C# que interage com a API do Pokémon, feito com o objetivo de estudar e praticar os estudos sobre Orientação a Objetos.
 
 O objetivo é construir uma aplicação onde os usuários podem escolher seus pokémons favoritos e interagir com eles.
-Nele utilizei de duas 
 
 -API do Pokémon: Busca por informações detalhadas de diversas espécies de Pokémon.
 
@@ -11,7 +10,7 @@ Nele utilizei de duas
 
 -Organização de dados: Parsing do JSON retornado pela API e exibição das informações.
 
--Padrão MVC: Arquitetura organizada em Model, View e Controller para melhor modularização do código.
+-Padrão MVC: Arquitetura organizada em Model, View e Controller.
 
 -Interação com os pokémons: Simulação de interações com os pokémons.
 
