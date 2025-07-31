@@ -1,4 +1,4 @@
-  # MyTamagotchiGame
+  # My Tamagotchi Game
   Este é um jogo de console tipo Tamagotchi desenvolvido em C#.
 
 Projeto back-end em C# que interage com a API do Pokémon, feito com o objetivo de estudar e praticar os estudos sobre Orientação a Objetos.
@@ -14,7 +14,6 @@ O objetivo é construir uma aplicação onde os usuários podem escolher seus po
 -Padrão MVC: Arquitetura organizada em Model, View e Controller.
 
 -Interação com os pokémons: Simulação de interações com os pokémons.
-
 
 
 ## Como Rodar o Jogo
@@ -39,7 +38,7 @@ O objetivo é construir uma aplicação onde os usuários podem escolher seus po
 Você pode baixar a versão executável do jogo para Windows (64-bit) diretamente da página de Releases do GitHub.
 
 1.  Vá para a página de [Releases do MyTamagotchiGame](https://github.com/crislaine-santos/Tamagotchi/releases/tag/v1.0.0).
-2.  Baixe o arquivo `ClikEJogue.zip` (ou o nome que você deu ao seu pacote).
+2.  Baixe o arquivo `ClikEJogue.zip`.
 3.  Descompacte o arquivo em uma pasta no seu computador.
 4.  Dentro da pasta descompactada, localize e execute `Tamagotchi.exe`.
 
