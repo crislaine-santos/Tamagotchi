@@ -26,7 +26,7 @@ namespace Tamagotchi.View
             int escolha;
             Console.Clear();
 
-            if (int.TryParse(input, out escolha)) //O out indica que a variável escolha
+            if (int.TryParse(input, out escolha)) 
             {
                 switch (escolha)
                 {
@@ -59,14 +59,14 @@ namespace Tamagotchi.View
 
 
         }
-        public void ListarMascotesDisponiveis() //tinha um async aqui
+        public void ListarMascotesDisponiveis() 
         {
             var client = new RestClient("https://pokeapi.co");
 
             Console.Clear();
             Console.WriteLine("\n--------------------------------ADOTAR UM MASCOTE--------------------------------\n");
             Console.WriteLine("Escolha uma espécie\n");
-            List<string> listaPokemons = new() { "bulbasaur", "charmander", "squirtle", "pikachu" };//Adotar um pet
+            List<string> listaPokemons = new() { "bulbasaur", "charmander", "squirtle", "pikachu" };
             foreach (string pokemon in listaPokemons)
             {
 
@@ -102,7 +102,7 @@ namespace Tamagotchi.View
             int escolha;
             Console.Clear();
 
-            if (int.TryParse(input, out escolha)) //O out indica que a variável escolha
+            if (int.TryParse(input, out escolha)) 
             {
                 if (escolha == 1)
                 {
@@ -165,7 +165,7 @@ namespace Tamagotchi.View
             string? input = Console.ReadLine();
             int escolha;
 
-            if (int.TryParse(input, out escolha)) //O out indica que a variável escolha
+            if (int.TryParse(input, out escolha)) 
             {
                switch (escolha) 
                { 

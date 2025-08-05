@@ -3,15 +3,15 @@
    
     public class MascoteInteracoes
     {       
-        public int Alimentacao { get; private set; } //fome
-        public int Humor { get; private set; } //brincar
-        public int Energia { get; private set; } // descanso       
+        public int Alimentacao { get; private set; } 
+        public int Humor { get; private set; } 
+        public int Energia { get; private set; }     
         public string? Nome { get; set; }        
 
-        public MascoteInteracoes() //esse construtor garante que o Tamagotchi tenha valores aleatórios para suas necessidades básicas
+        public MascoteInteracoes() 
         {
-            var rend = new Random(); //"Random" é para criar umm numero aleatório
-            Alimentacao = rend.Next(11); // O método Next() da classe Random gera um número aleatório não negativo menor que o valor especificado
+            var rend = new Random(); 
+            Alimentacao = rend.Next(11); 
             Humor = rend.Next(11);
             Energia = rend.Next(11);
         }
@@ -23,8 +23,8 @@
 
         public void Alimentar()
         {
-            Alimentacao = Math.Min(Alimentacao + 2, 10); //"Math.Min" garante que o valor de Alimentação nunca seja maior que 10
-            Energia = Math.Max(Energia - 1, 0); //garante que o valor de Energia nunca seja negativo
+            Alimentacao = Math.Min(Alimentacao + 2, 10); 
+            Energia = Math.Max(Energia - 1, 0); 
 
             Console.Clear();
             Console.WriteLine("(=^w^=)\n");

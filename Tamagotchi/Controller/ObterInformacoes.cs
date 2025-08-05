@@ -7,14 +7,14 @@ namespace Tamagotchi.Controller
 {
     public static class ObterInformaoces
     {
-        public static async Task ObterInformacoesMascoteCompleto(RestClient client, string mascote) //"async, Task" que essa função é assíncrona
+        public static async Task ObterInformacoesMascoteCompleto(RestClient client, string mascote) 
         {
             try
             {
                 var request = new RestRequest($"/api/v2/pokemon/{mascote}", Method.Get);
                 var resposta = await client.ExecuteAsync(request);
 
-                if (!string.IsNullOrEmpty(resposta.Content) && resposta.IsSuccessStatusCode) //"IsSuccessStatusCode"Essa propriedade retorna um valor booleano (verdadeiro ou falso) indicando se a operação HTTP foi bem-sucedida ou não. //"!string.IsNullOrEmpty(resposta.Content)"Essa função verifica se uma string é nula (null) ou vazia (string.Empty).
+                if (!string.IsNullOrEmpty(resposta.Content) && resposta.IsSuccessStatusCode) 
                 {
                     var respostaDeserializada = JsonConvert.DeserializeObject<Mascote>(resposta.Content);
                     if (respostaDeserializada != null)
@@ -77,7 +77,7 @@ namespace Tamagotchi.Controller
             foreach (var ability in respostaDeserializada.Abilities)
 
             {
-                var abilityResult = ability.ability; //* 
+                var abilityResult = ability.ability; 
                 Console.WriteLine($"-{abilityResult.Name}");
             }           
 
