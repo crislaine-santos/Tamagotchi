@@ -46,11 +46,6 @@ Você pode baixar a versão executável do jogo para Windows (64-bit) diretament
 * C#
 * .NET
 
-
-
-
-
-
-
+https://github.com/user-attachments/assets/e2e092b3-68e4-42b6-a068-1294e86b71f6
 
 
