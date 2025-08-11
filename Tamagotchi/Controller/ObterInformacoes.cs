@@ -36,36 +36,6 @@ namespace Tamagotchi.Controller
                 Console.WriteLine(mensage);
             }
         }       
-        public static async Task ObterNomeMascotePorString(RestClient client, string mascote)
-        {
-            try
-            {
-                var request = new RestRequest($"/api/v2/pokemon/{mascote}", Method.Get);
-                var resposta = await client.ExecuteAsync(request);
-
-                if (!string.IsNullOrEmpty(resposta.Content) && resposta.IsSuccessStatusCode)
-                {
-                    var respostaDeserializada = JsonConvert.DeserializeObject<Mascote>(resposta.Content);
-                    if (respostaDeserializada != null)
-                    {
-                        NomeMascote(respostaDeserializada);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Erro ao deserializar os dados.");
-                    }                   
-                }
-                else
-                {
-                    Console.WriteLine("Desculpe não pude encontrar as informações da API fornecida!");
-                }
-            }
-            catch (Exception mensage)
-            {
-                Console.WriteLine(mensage);
-            }
-        }
-
         public static void InfomacoesMascote(Mascote respostaDeserializada)
         {
             Console.WriteLine($"Nome: {respostaDeserializada.Name}");
@@ -81,11 +51,7 @@ namespace Tamagotchi.Controller
                 Console.WriteLine($"-{abilityResult.Name}");
             }           
 
-        }
-        public static void NomeMascote(Mascote respostaDeserializada)
-        {
-            Console.WriteLine($"Nome: {respostaDeserializada.Name}");
-        }       
+        }      
     }
 }
 

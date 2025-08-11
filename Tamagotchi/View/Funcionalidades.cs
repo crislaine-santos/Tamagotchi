@@ -1,4 +1,5 @@
 ﻿using RestSharp;
+using System.Data;
 using Tamagotchi.Controller;
 using Tamagotchi.Model;
 
@@ -7,7 +8,7 @@ namespace Tamagotchi.View
     public class Funcionalidades
     {        
         private MascoteInteracoes mascoteAdotado = new();
-        private string? NomeMascote { get; set; }     
+        private string? NomeMascote { get; set; }    
         public void Menu()
         {
             Console.WriteLine(@"
@@ -61,18 +62,17 @@ namespace Tamagotchi.View
         }
         public void ListarMascotesDisponiveis() 
         {
-            var client = new RestClient("https://pokeapi.co");
-
             Console.Clear();
             Console.WriteLine("\n--------------------------------ADOTAR UM MASCOTE--------------------------------\n");
             Console.WriteLine("Escolha uma espécie\n");
-            List<string> listaPokemons = new() { "bulbasaur", "charmander", "squirtle", "pikachu" };
+            List<string> listaPokemons = new() { "bulbasaur", "charmander", "squirtle", "pikachu" };                                             
+
             foreach (string pokemon in listaPokemons)
             {
 
-                ObterInformaoces.ObterNomeMascotePorString(client, pokemon).Wait();
+                Console.WriteLine($"Nome: {pokemon}"); 
             }
-            
+
             Console.WriteLine("\n");
             NomeMascote = Console.ReadLine();            
             

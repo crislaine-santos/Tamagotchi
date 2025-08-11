@@ -18,17 +18,24 @@
 
         public void AtualizarPropriedade(string mascote)
         {
-            Nome = mascote;
+            Nome = mascote;   
         }
-
+        public void MostrarStatus()
+        {
+            Console.Clear();
+            Console.WriteLine($"Status do Mascote: {Nome}\n");
+            Console.WriteLine($"Alimentação: {Alimentacao}");
+            Console.WriteLine($"Humor: {Humor}");
+            Console.WriteLine($"Energia: {Energia}");
+        }
         public void Alimentar()
         {
-            Alimentacao = Math.Min(Alimentacao + 2, 10); 
+            Alimentacao = Math.Min(Alimentacao + 2, 10);
             Energia = Math.Max(Energia - 1, 0); 
 
             Console.Clear();
             Console.WriteLine("(=^w^=)\n");
-            Console.WriteLine("Mascote Alimentado!");
+            Console.WriteLine($"{Nome} foi alimentado!");
         }
 
         public void Brincar()
@@ -39,7 +46,7 @@
 
             Console.Clear();
             Console.WriteLine("(=^w^=)\n");
-            Console.WriteLine("Mascote está feliz!");
+            Console.WriteLine($"{Nome} está feliz!");
         }
 
         public void Descansar()
@@ -49,17 +56,7 @@
 
             Console.Clear();
             Console.WriteLine("(- 0 -)\n");
-            Console.WriteLine("Mascote está dormindo!");
-        }
-
-        public void MostrarStatus()
-        {
-            Console.Clear();
-            Console.WriteLine($"Status do Mascote: {Nome}\n");
-            Console.WriteLine($"Alimentação: {Alimentacao}");
-            Console.WriteLine($"Humor: {Humor}");
-            Console.WriteLine($"Energia: {Energia}");            
-
+            Console.WriteLine($"{Nome} está dormindo!");
         }
     }
 }
