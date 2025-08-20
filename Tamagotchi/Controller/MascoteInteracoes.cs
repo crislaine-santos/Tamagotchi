@@ -1,29 +1,28 @@
-﻿namespace Tamagotchi.Model
+﻿namespace Tamagotchi.Controller
 {
-   
     public class MascoteInteracoes
-    {       
-        public int Alimentacao { get; private set; } 
-        public int Humor { get; private set; } 
-        public int Energia { get; private set; }     
-        public string? Nome { get; set; }        
+    {
+        public int Alimentacao { get; private set; }
+        public int Humor { get; private set; }
+        public int Energia { get; private set; }
+        public string? Nome { get; set; }
 
-        public MascoteInteracoes() 
+        public MascoteInteracoes()
         {
-            var rend = new Random(); 
-            Alimentacao = rend.Next(11); 
+            var rend = new Random();
+            Alimentacao = rend.Next(11);
             Humor = rend.Next(11);
             Energia = rend.Next(11);
         }
 
         public void AtualizarPropriedade(string mascote)
         {
-            Nome = mascote;   
+            Nome = mascote;
         }
         public void MostrarStatus()
         {
             Console.Clear();
-            Console.WriteLine($"Status do Mascote: {Nome}\n");
+            Console.WriteLine($"Status do {Nome}\n");
             Console.WriteLine($"Alimentação: {Alimentacao}");
             Console.WriteLine($"Humor: {Humor}");
             Console.WriteLine($"Energia: {Energia}");
@@ -31,7 +30,7 @@
         public void Alimentar()
         {
             Alimentacao = Math.Min(Alimentacao + 2, 10);
-            Energia = Math.Max(Energia - 1, 0); 
+            Energia = Math.Max(Energia - 1, 0);
 
             Console.Clear();
             Console.WriteLine("(=^w^=)\n");

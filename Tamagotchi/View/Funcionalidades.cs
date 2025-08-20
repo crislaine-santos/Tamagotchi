@@ -1,7 +1,6 @@
 ﻿using RestSharp;
-using System.Data;
 using Tamagotchi.Controller;
-using Tamagotchi.Model;
+using Tamagotchi.Data;
 
 namespace Tamagotchi.View
 {
@@ -156,10 +155,10 @@ namespace Tamagotchi.View
         {
             Console.Clear();
             Console.WriteLine("\n---------------------------------MENU INTERAÇÃO---------------------------------\n");            
-            Console.WriteLine("1- Saber como o mascote está");
-            Console.WriteLine("2- Alimentar o mascote");
-            Console.WriteLine("3- Brincar com o mascote");
-            Console.WriteLine("4- Por o mascote para dormir");
+            Console.WriteLine($"1- Saber como o {NomeMascote} está");
+            Console.WriteLine($"2- Alimentar o {NomeMascote}");
+            Console.WriteLine($"3- Brincar com o {NomeMascote}");
+            Console.WriteLine($"4- Por o {NomeMascote} para dormir");
             Console.WriteLine("5- Voltar para o menu principal");
             Console.Write("\nEscolha uma opção: ");
             string? input = Console.ReadLine();
